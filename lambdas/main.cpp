@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
+#include <iterator>
 #include <vector>
 
 std::vector<int> generate_random_vector(unsigned int size,
@@ -18,11 +19,23 @@ std::vector<int> generate_random_vector(unsigned int size,
 // function. An optional return type can also be specified using []()->int{}.
 
 int main() {
-	std::vector<int> randVector = generate_random_vector(10, 0, 50);
-
 	// Sort a list using simple lambda function
+	// < sorts in ascending order
+	// > sorts in descending order
+	std::vector<int> randVector = generate_random_vector(10, 0, 50);
 	std::sort(randVector.begin(), randVector.end(),
-		  [](int x, int y) -> bool { return x < y; });
+		  [](const int x, const int y) -> bool { return x > y; });
+	// for (const auto val : randVector) std::cout << val << std::endl;
+
+	// Extract all even or odd values from a vextor
+	// x % 2 returns odd values
+	// !(x % 2) returns odd values
+	std::vector<int> randVector1 = generate_random_vector(20, 0, 50);
+	std::vector<int> evenVector;
+	std::copy_if(randVector1.begin(), randVector1.end(),
+		     std::back_inserter(evenVector),
+		     [](const int x) -> bool { return (x % 2); });
+	// for (const auto val : evenVector) std::cout << val << std::endl;
 }
 
 std::vector<int> generate_random_vector(unsigned int size,
