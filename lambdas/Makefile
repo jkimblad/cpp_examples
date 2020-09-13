@@ -1,5 +1,5 @@
 all:
 	${CXX} -o lambdas main.cpp
 
-run: 
+run: all
 	./lambdas
