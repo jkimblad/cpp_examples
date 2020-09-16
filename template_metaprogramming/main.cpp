@@ -10,7 +10,7 @@ struct Factorial<0> {
 	static const int result = 1;
 };
 
-// Fibonacci series using TMP?
+// Fibonacci series using TMP
 template <int N>
 struct Fibonacci {
 	static const int result = Fibonacci<N - 1>::result + Fibonacci<N - 2>::result;
@@ -23,6 +23,8 @@ template <>
 struct Fibonacci<0> {
 	static const int result = 0;
 };
+
+// Check if number is prime using TMP
 
 int main() {
 	// Calculate 5!
