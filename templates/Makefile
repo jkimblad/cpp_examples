@@ -1,5 +1,5 @@
 all:
-	${CXX} -o templates main.cpp
+	${CXX} -std=c++2a -o templates main.cpp
 
 run: all
 	./templates
